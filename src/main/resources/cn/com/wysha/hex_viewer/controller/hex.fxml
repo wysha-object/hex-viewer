@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane styleClass="scene" stylesheets="/static/css/global.css, /static/css/hex.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.com.wysha.hex_viewer.controller.HexController">
+    <VBox fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0">
+                <children>
+                    <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleViewMode" text="64列模式">
+                        <HBox.margin>
+                            <Insets left="8.0" right="8.0" />
+                        </HBox.margin>
+                    </ToggleButton>
+                    <HBox alignment="CENTER_LEFT">
+                        <children>
+                            <Button mnemonicParsing="false" onAction="#writeFile" text="写入文件至" />
+                            <Label text="起始位置:" />
+                            <TextField fx:id="fromInput" />
+                            <Label text="结束位置:" />
+                            <TextField fx:id="toInput" />
+                        </children>
+                  <HBox.margin>
+                     <Insets left="8.0" right="8.0" />
+                  </HBox.margin>
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT">
+                        <Button mnemonicParsing="false" onAction="#jmp" text="跳转至" />
+                        <Label text="0x" />
+                        <TextField fx:id="jmpAddrInput" />
+                        <HBox.margin>
+                            <Insets left="8.0" right="8.0" />
+                        </HBox.margin>
+                    </HBox>
+                </children>
+                <padding>
+                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                </padding>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </HBox>
+            <BorderPane>
+                <center>
+                    <HBox fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onScroll="#onScroll">
+                        <AnchorPane>
+                            <HBox.margin>
+                                <Insets right="2.0" />
+                            </HBox.margin>
+                     <children>
+                        <Canvas fx:id="hexCanvas" height="200.0" width="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                        </AnchorPane>
+                        <AnchorPane>
+                            <HBox.margin>
+                                <Insets right="2.0" />
+                            </HBox.margin>
+                     <children>
+                        <Canvas fx:id="asciiCanvas" height="200.0" width="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                        </AnchorPane>
+                        <ScrollBar fx:id="bar" maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefWidth="20.0" visibleAmount="1.0" />
+                    </HBox>
+                </center>
+                <VBox.margin>
+                    <Insets bottom="20.0" top="20.0" />
+                </VBox.margin>
+            </BorderPane>
+        </children>
+    </VBox>
+</AnchorPane>
